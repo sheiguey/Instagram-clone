@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Image, Input, VStack } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Input, Text, VStack } from "@chakra-ui/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -53,13 +53,13 @@ export default function AuthForm() {
 
         <Flex justifyContent={"center"} alignItems={"center"} my={4} gap={1} w={"full"}>
           <Box flex={2} h={"1px"} bg={"gray.400"} />
-          <text mx={1} color="white">OR</text>
+          <Text mx={1} color="white">OR</Text>
           <Box flex={2} h={"1px"} bg={"gray.400"} />
         </Flex>
 
           <Flex alignItems={"center"} justifyContent={"center"} cursor={"pointer"} gap={2}>
             <Image src="/google.png" alt="google logo" w={5} />
-            <text mx={2} color="blue.500">Log In with Google</text>
+            <Text mx={2} color="blue.500">Log In with Google</Text>
           </Flex>
       </VStack>
      </Box>

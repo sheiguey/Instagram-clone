@@ -1,10 +1,13 @@
+import PageLayout from "./Layouts/PageLayout"
 import Router from "./routes"
 
 function App() {
 
   return (
     <>
-        <Router/>
+      <PageLayout>
+        <Router />
+      </PageLayout>
     </>
   )
 }
