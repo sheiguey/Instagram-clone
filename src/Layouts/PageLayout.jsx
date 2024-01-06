@@ -1,7 +1,7 @@
 import { Box, Flex, calc } from '@chakra-ui/react'
 import React from 'react'
 import { useLocation } from 'react-router-dom'
-import Sibar from '../components/AuthForm/Sidebar/Sibar'
+import Sibar from '../components/Sidebar/Sibar'
 
 export default function PageLayout({children}) {
   const {pathname} = useLocation()
