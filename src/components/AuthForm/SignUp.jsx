@@ -1,8 +1,8 @@
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import { Button, Input, InputGroup, InputRightElement, Alert,AlertTitle,AlertDescription, } from "@chakra-ui/react";
+import { Button, Input, InputGroup, InputRightElement, Alert,AlertIcon } from "@chakra-ui/react";
 import { useState } from "react";
 import useSignUpWithEmailAndPassword from "../../Hooks/useSignUpWithEmailAndPassword";
-import useShowToast from "../../Hooks/useShowToast";
+
 
 export default function SignUp() {
 
@@ -15,7 +15,7 @@ export default function SignUp() {
 
     const [showPassWord,setShowPassWord] =useState(false);
     const {loading,error,signup} = useSignUpWithEmailAndPassword();
-    const {displayToast} = useShowToast();
+   
 
     return (
         <>
@@ -59,7 +59,12 @@ export default function SignUp() {
                 </Button>
               </InputRightElement>
             </InputGroup>
-            
+            {error &&
+              <Alert status='error' fontSize={13} p={2} borderRadius={4}>
+              <AlertIcon fontSize={12} />
+               {error.message}
+            </Alert>
+            }
             <Button w={"full"} colorScheme="blue" size={"sm"} fontSize={14} onClick={()=>signup(inputs)}
               isLoading={loading}
             >

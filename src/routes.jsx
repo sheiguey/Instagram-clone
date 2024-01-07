@@ -2,12 +2,13 @@ import {Navigate, Route, Routes } from "react-router-dom"
 import HomePage from "./pages/HomePage/HomePage";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
-import useAuthStore from "./store/auhStore";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from "./firebase/firebase";
 
 
 
 const Router = ()=>{
-    const authUser = useAuthStore((state)=>state.user);
+    const [authUser] = useAuthState(auth)
     return(
         <Routes>
             <Route path='/' element={authUser?<HomePage/>:<Navigate to='/auth'/> } />
