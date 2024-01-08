@@ -63,7 +63,7 @@ const {isLoginOut,handleLogout}=useLogout()
     p={2} 
     display={{base:"bloc",md:"none"}} 
     cursor="pointer"
-    borderRaduis={6}
+    borderRadius={6}
     _hover={{bg:"whiteAlpha.200"}}
     w={10}
     >

@@ -21,7 +21,7 @@ export default function ProfilePosts() {
     >
     {isLoading &&
       [0,1,2,3,4,5].map((_,idx)=>(
-        <Skeleton w={"full"}>
+        <Skeleton w={"full"} key={idx}>
           <Box h='300px'> contents wrapped</Box>
         </Skeleton>
       ))
@@ -29,10 +29,10 @@ export default function ProfilePosts() {
 
     {!isLoading && (
       <>
-      <ProfilePost img="/img1.png" />
-      <ProfilePost img="/img2.png" />
-      <ProfilePost img="/img3.png" />
-      <ProfilePost img="/img4.png" />
+      <ProfilePost img="/img1.png" key={1} />
+      <ProfilePost img="/img2.png" key={2} />
+      <ProfilePost img="/img3.png" key={3} />
+      <ProfilePost img="/img4.png" key={4}/>
       </>
     )
 
