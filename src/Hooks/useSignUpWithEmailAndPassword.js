@@ -46,9 +46,9 @@ export default function useSignUpWithEmailAndPassword() {
                 posts:[],
                 createdAt: Date.now()
             }
-            await setDoc(doc(db,"users",newUser.user.uid),userDoc)
-            localStorage.setItem("user-info",JSON.stringify(userDoc))
-            displayToast("Success","user created successfully","success")
+            await setDoc(doc(db,"users",newUser.user.uid),userDoc);
+            localStorage.setItem("user-info",JSON.stringify(userDoc));
+            displayToast("Success","user created successfully","success");
            }
           
          }

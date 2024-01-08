@@ -1,6 +1,5 @@
 import { Box, Flex, Image,Text, VStack } from "@chakra-ui/react";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
 import Login from "./Login";
 import SignUp from "./SignUp";
 import GoogleAuth from "./GoogleAuth";
@@ -8,8 +7,6 @@ import GoogleAuth from "./GoogleAuth";
 
 export default function AuthForm() {
   const [isLogin,setIsLogin]=useState(true);
-  const pathname = useLocation()
-
   return (
     <>
      <Box border={"1px solid gray"} borderRadius={5} padding={5}>
@@ -24,7 +21,7 @@ export default function AuthForm() {
           <Box flex={2} h={"1px"} bg={"gray.400"} />
         </Flex>
 
-        <GoogleAuth/>
+        <GoogleAuth prefix={isLogin?"Log in":"Sign Up"}/>
       </VStack>
      </Box>
 
