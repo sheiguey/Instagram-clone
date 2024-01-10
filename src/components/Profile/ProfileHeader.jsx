@@ -1,6 +1,16 @@
-import { Avatar, AvatarGroup, Flex, VStack,Text, Button } from "@chakra-ui/react";
+import { Avatar, AvatarGroup, Flex, VStack,Text, Button,useDisclosure, } from "@chakra-ui/react";
+import useUserProfile from "../../store/userProfileStore";
+import useAuthStore from "../../store/auhStore";
+import EditProfile from "./EditProfile";
 
-export default function ProfileHeader({userProfile}) {
+export default function ProfileHeader() {
+  const {userProfile} = useUserProfile();
+  const {user}= useAuthStore();
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const visitingOwnProfileAndAuth = user && userProfile.username === user.username;
+  const  visitingAnotherProfileAndAuth = user && userProfile.username !== user.username
+  
+
   return (
    <Flex gap={{base:4,sm:10}} py={10} direction={{base:"column",sm:"row"}}>
      <AvatarGroup size={{base:"xl",md:"2xl"}} justifySelf={"center"} alignSelf={"flex-start"} mx={"auto"}>
@@ -17,12 +27,22 @@ export default function ProfileHeader({userProfile}) {
          <Text fontSize={{base:"sm",md:"lg"}}>
           {userProfile.username}
          </Text>
-
-         <Flex gap={4} alignItems={"center"} justifyContent={"center"}>
-          <Button bg={"white"} color={"black"} _hover={{bg:"whiteAlpha.800"}} size={{base:"xs",md:"sm"}}>
-             Edit Profile
-          </Button>
-         </Flex>
+        {
+          visitingOwnProfileAndAuth && <Flex gap={4} alignItems={"center"} justifyContent={"center"}>
+           <Button bg={"white"} color={"black"} _hover={{bg:"whiteAlpha.800"}} size={{base:"xs",md:"sm"}} 
+           onClick={onOpen}
+           >
+              Edit Profile
+           </Button>
+          </Flex>
+        }
+        {
+          visitingAnotherProfileAndAuth && <Flex gap={4} alignItems={"center"} justifyContent={"center"}>
+           <Button bg={"blue.500"} color={"white"} _hover={{bg:"blue.600"}} size={{base:"xs",md:"sm"}}>
+              Follow
+           </Button>
+          </Flex>
+        }
        </Flex>
        <Flex alignItems={"center"} gap={{base:2,sm:4}}>
          <Text fontSize={{base:"xs",md:"sm"}}>
@@ -45,6 +65,9 @@ export default function ProfileHeader({userProfile}) {
        </Flex>
        <Text fontSize={"sm"}>{userProfile.bio}</Text>
      </VStack>
+     {
+      isOpen && <EditProfile isOpen={isOpen} onClose={onClose} userProfile={userProfile} />
+     }
    </Flex>
   )
 }

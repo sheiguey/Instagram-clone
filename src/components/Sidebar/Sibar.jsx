@@ -105,7 +105,6 @@ const {isLoginOut,handleLogout}=useLogout()
   
 
     <Tooltip
-          
            hasArrow
            label={"logout"}
            placement='right'

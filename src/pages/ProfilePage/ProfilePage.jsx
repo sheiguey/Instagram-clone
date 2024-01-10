@@ -23,7 +23,7 @@ export default function ProfilePage() {
         mx={"auto"}
         flexDirection={"column"}
       >
-       {!isLoading && userProfile && <ProfileHeader userProfile={userProfile} />}
+       {!isLoading && userProfile && <ProfileHeader />}
 			 {isLoading && <ProfileHeaderSkeleton />}
       </Flex>
       <Flex
